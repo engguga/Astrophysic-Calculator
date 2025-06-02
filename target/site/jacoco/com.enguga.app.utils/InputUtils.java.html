@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InputUtils.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Astrophysics Java</a> &gt; <a href="index.source.html" class="el_package">com.enguga.app.utils</a> &gt; <span class="el_source">InputUtils.java</span></div><h1>InputUtils.java</h1><pre class="source lang-java linenums">package com.enguga.app.utils;
+
+import java.util.Scanner;
+
+<span class="nc" id="L5">public class InputUtils {</span>
+
+    public static double readDouble(Scanner scanner, String prompt) {
+<span class="nc" id="L8">        double value = 0;</span>
+<span class="nc" id="L9">        boolean valid = false;</span>
+<span class="nc bnc" id="L10" title="All 2 branches missed.">        while (!valid) {</span>
+            try {
+<span class="nc" id="L12">                System.out.print(prompt);</span>
+<span class="nc" id="L13">                String input = scanner.nextLine();</span>
+
+<span class="nc" id="L15">                input = input.toLowerCase()</span>
+<span class="nc" id="L16">                        .replaceAll(&quot;[a-zA-Z]+&quot;, &quot;&quot;)  // remove kg, m, s etc.</span>
+<span class="nc" id="L17">                        .replaceAll(&quot;[,]&quot;, &quot;.&quot;)       // troca vírgula por ponto</span>
+<span class="nc" id="L18">                        .replaceAll(&quot;\\s+&quot;, &quot;&quot;);      // remove espaços</span>
+
+<span class="nc" id="L20">                value = Double.parseDouble(input);</span>
+<span class="nc" id="L21">                valid = true;</span>
+<span class="nc" id="L22">            } catch (NumberFormatException e) {</span>
+<span class="nc" id="L23">                System.out.println(&quot;Entrada inválida. Tente novamente.&quot;);</span>
+<span class="nc" id="L24">            }</span>
+        }
+<span class="nc" id="L26">        return value;</span>
+    }
+
+    public static int readInt(Scanner scanner) {
+<span class="nc" id="L30">        int value = 0;</span>
+<span class="nc" id="L31">        boolean valid = false;</span>
+<span class="nc bnc" id="L32" title="All 2 branches missed.">        while (!valid) {</span>
+            try {
+<span class="nc" id="L34">                String input = scanner.nextLine().replaceAll(&quot;\\s+&quot;, &quot;&quot;);</span>
+<span class="nc" id="L35">                value = Integer.parseInt(input);</span>
+<span class="nc" id="L36">                valid = true;</span>
+<span class="nc" id="L37">            } catch (NumberFormatException e) {</span>
+<span class="nc" id="L38">                System.out.println(&quot;Entrada inválida. Digite um número inteiro.&quot;);</span>
+<span class="nc" id="L39">            }</span>
+        }
+<span class="nc" id="L41">        return value;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
